@@ -4,6 +4,11 @@
         <TargetFramework>net6.0</TargetFramework>
         <ImplicitUsings>enable</ImplicitUsings>
         <Nullable>enable</Nullable>
+        <PackageId>Sanet.MVVM.Core</PackageId>
+        <Version>1.0.0</Version>
+        <Authors>Anton Makarevich</Authors>
+        <Company>Anton Makarevich</Company>
+        <Description>A simple MVVM helpers library to support my personal legacy projects</Description>
     </PropertyGroup>
 
     <ItemGroup>
