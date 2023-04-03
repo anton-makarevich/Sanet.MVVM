@@ -4,11 +4,11 @@
         <TargetFramework>net6.0</TargetFramework>
         <ImplicitUsings>enable</ImplicitUsings>
         <Nullable>enable</Nullable>
-        <PackageId>Sanet.MVVM.Navigation.Avalonia</PackageId>
+        <PackageId>Sanet.MVVM.Views.Avalonia</PackageId>
         <Version>0.1.0</Version>
         <Authors>Anton Makarevich</Authors>
         <Company>Anton Makarevich</Company>
-        <Description>Sanet MVVM Navigation implementation for Avalonia</Description>
+        <Description>Avalonia BaseView for Sanet MVVM</Description>
     </PropertyGroup>
 
     <ItemGroup>

@@ -6,6 +6,10 @@ Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Navigation", "Navigation", 
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Sanet.MVVM.Navigation.Avalonia", "Navigation\Sanet.MVVM.Navigation.Avalonia\Sanet.MVVM.Navigation.Avalonia.csproj", "{1F099723-F105-4192-A723-E97B77A99C33}"
 EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Views", "Views", "{8E872B26-9C8B-4E5D-8160-60CDE1F388AA}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Sanet.MVVM.Views.Avalonia", "Views\Sanet.MVVM.Views.Avalonia\Sanet.MVVM.Views.Avalonia.csproj", "{671A7242-40D5-443B-A273-EF4E1C4A9B0A}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -20,8 +24,13 @@ Global
 		{1F099723-F105-4192-A723-E97B77A99C33}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{1F099723-F105-4192-A723-E97B77A99C33}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{1F099723-F105-4192-A723-E97B77A99C33}.Release|Any CPU.Build.0 = Release|Any CPU
+		{671A7242-40D5-443B-A273-EF4E1C4A9B0A}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{671A7242-40D5-443B-A273-EF4E1C4A9B0A}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{671A7242-40D5-443B-A273-EF4E1C4A9B0A}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{671A7242-40D5-443B-A273-EF4E1C4A9B0A}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(NestedProjects) = preSolution
 		{1F099723-F105-4192-A723-E97B77A99C33} = {2C00DF42-EB2C-4B2B-ADCE-3D7FECF47F57}
+		{671A7242-40D5-443B-A273-EF4E1C4A9B0A} = {8E872B26-9C8B-4E5D-8160-60CDE1F388AA}
 	EndGlobalSection
 EndGlobal
