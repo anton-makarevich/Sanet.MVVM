@@ -50,7 +50,7 @@ public abstract class BaseViewModel : BindableBase
         return NavigationService.NavigateBackAsync();
     }
 
-    internal async Task CloseAsync(object? result = null)
+    protected async Task CloseAsync(object? result = null)
     {
         await NavigationService.CloseAsync();
         if (ExpectsResult)
