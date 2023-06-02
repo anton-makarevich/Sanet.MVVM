@@ -5,7 +5,7 @@
         <ImplicitUsings>enable</ImplicitUsings>
         <Nullable>enable</Nullable>
         <PackageId>Sanet.MVVM.Navigation.Avalonia</PackageId>
-        <Version>0.2.1-preview</Version>
+        <Version>0.2.1-preview8</Version>
         <Authors>Anton Makarevich</Authors>
         <Company>Anton Makarevich</Company>
         <Description>Sanet MVVM Navigation implementation for Avalonia</Description>

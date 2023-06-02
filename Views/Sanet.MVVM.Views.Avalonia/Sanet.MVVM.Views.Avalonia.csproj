@@ -5,7 +5,7 @@
         <ImplicitUsings>enable</ImplicitUsings>
         <Nullable>enable</Nullable>
         <PackageId>Sanet.MVVM.Views.Avalonia</PackageId>
-        <Version>0.2.1-preview</Version>
+        <Version>0.2.1-preview8</Version>
         <Authors>Anton Makarevich</Authors>
         <Company>Anton Makarevich</Company>
         <Description>Avalonia BaseView for Sanet MVVM</Description>
