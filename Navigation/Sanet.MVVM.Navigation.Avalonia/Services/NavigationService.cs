@@ -44,7 +44,7 @@ public class NavigationService : INavigationService
             var rootView = _desktop.MainWindow.Content as IBaseView;
             _backViewStack.Push(rootView);
             _desktop.MainWindow.Content = view;
-        });
+        }).GetTask();
     }
 
     private IBaseView CreateView(BaseViewModel viewModel)
@@ -105,7 +105,7 @@ public class NavigationService : INavigationService
                 var view = _backViewStack.Pop();
                 _desktop.MainWindow.Content = view;
             }
-        });
+        }).GetTask();
     }
 
     public Task NavigateToRootAsync()
