@@ -7,10 +7,12 @@ namespace Sanet.MVVM.Navigation.Avalonia.Services
 {
     public abstract class BaseNavigationService : INavigationService
     {
-        protected readonly List<BaseViewModel> _viewModels = new();
-        protected readonly Dictionary<Type, Type> _viewModelViewDictionary = new();
+        private readonly List<BaseViewModel> _viewModels = new();
+        private readonly Dictionary<Type, Type> _viewModelViewDictionary = new();
 
-        protected readonly Stack<IBaseView> _backViewStack = new Stack<IBaseView>();
+        private readonly Stack<IBaseView> _backViewStack = new();
+        private readonly IServiceProvider _container;
+
 
         protected BaseNavigationService(IServiceProvider container)
         {
@@ -23,7 +25,7 @@ namespace Sanet.MVVM.Navigation.Avalonia.Services
             _viewModelViewDictionary.Add(viewModel, view);
         }
 
-        protected T CreateViewModel<T>() where T : BaseViewModel
+        private T CreateViewModel<T>() where T : BaseViewModel
         {
             var vm = _container.GetService(typeof(T)) as T;
             vm?.SetNavigationService(this);
@@ -31,22 +33,22 @@ namespace Sanet.MVVM.Navigation.Avalonia.Services
             return vm;
         }
 
-        protected Task OpenViewModelAsync<T>(T viewModel, bool modalPresentation = false)
+        private Task OpenViewModelAsync<T>(T viewModel, bool modalPresentation = false)
             where T : BaseViewModel
         {
             return Dispatcher.UIThread.InvokeAsync(() =>
             {
                 var view = CreateView(viewModel);
-                var rootView = GetMainWindowContent() as IBaseView;
+                var rootView = GetCurrentView();
                 _backViewStack.Push(rootView);
                 SetMainWindowContent(view);
-            }).Task;
+            }).GetTask();
         }
 
-        protected abstract object GetMainWindowContent();
-        protected abstract void SetMainWindowContent(object view);
+        protected abstract IBaseView? GetCurrentView();
+        protected abstract void SetMainWindowContent(IBaseView view);
 
-        protected IBaseView CreateView(BaseViewModel viewModel)
+        private IBaseView CreateView(BaseViewModel viewModel)
         {
             var viewModelType = viewModel.GetType();
 
@@ -104,7 +106,7 @@ namespace Sanet.MVVM.Navigation.Avalonia.Services
                     var view = _backViewStack.Pop();
                     SetMainWindowContent(view);
                 }
-            }).Task;
+            }).GetTask();
         }
 
         public Task NavigateToRootAsync()
@@ -125,6 +127,29 @@ namespace Sanet.MVVM.Navigation.Avalonia.Services
             return OpenViewModelAsync(vm);
         }
         
-        // Other methods...
+        
+        public Task ShowViewModelAsync<T>(T viewModel) where T : BaseViewModel
+        {
+            return NavigateToViewModelAsync(viewModel);
+        }
+
+        public Task ShowViewModelAsync<T>() where T : BaseViewModel
+        {
+            return NavigateToViewModelAsync<T>();
+        }
+
+        public Task<TResult> ShowViewModelForResultAsync<T, TResult>(T viewModel)
+            where T : BaseViewModel
+            where TResult : class
+        {
+            throw new NotImplementedException();
+        }
+
+        public Task<TResult> ShowViewModelForResultAsync<T, TResult>()
+            where T : BaseViewModel
+            where TResult : class
+        {
+            throw new NotImplementedException();
+        }
     }
 }
