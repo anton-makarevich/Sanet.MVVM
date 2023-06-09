@@ -20,4 +20,6 @@ public interface INavigationService
     Task NavigateBackAsync();
     Task CloseAsync();
     Task NavigateToRootAsync();
+
+    void RegisterViews(Type view, Type viewModel);
 }

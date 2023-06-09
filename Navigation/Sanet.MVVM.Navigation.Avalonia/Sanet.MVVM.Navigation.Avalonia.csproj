@@ -5,15 +5,15 @@
         <ImplicitUsings>enable</ImplicitUsings>
         <Nullable>enable</Nullable>
         <PackageId>Sanet.MVVM.Navigation.Avalonia</PackageId>
-        <Version>0.2.1-preview8</Version>
+        <Version>0.2.2-11rc1.1</Version>
         <Authors>Anton Makarevich</Authors>
         <Company>Anton Makarevich</Company>
         <Description>Sanet MVVM Navigation implementation for Avalonia</Description>
     </PropertyGroup>
 
     <ItemGroup>
-      <PackageReference Include="Avalonia" Version="11.0.0-preview8" />
-      <PackageReference Include="Sanet.MVVM.Core" Version="1.0.0" />
+      <PackageReference Include="Avalonia" Version="11.0.0-rc1.1" />
+      <PackageReference Include="Sanet.MVVM.Core" Version="1.0.2" />
     </ItemGroup>
 
 </Project>
