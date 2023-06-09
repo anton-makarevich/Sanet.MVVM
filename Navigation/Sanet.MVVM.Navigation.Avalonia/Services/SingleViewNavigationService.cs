@@ -1,4 +1,5 @@
-﻿using Avalonia.Controls.ApplicationLifetimes;
+﻿using Avalonia.Controls;
+using Avalonia.Controls.ApplicationLifetimes;
 using Avalonia.Threading;
 using Sanet.MVVM.Core.Services;
 using Sanet.MVVM.Core.ViewModels;
@@ -6,19 +7,20 @@ using Sanet.MVVM.Core.Views;
 
 namespace Sanet.MVVM.Navigation.Avalonia.Services;
 
-public class NavigationService : INavigationService
+class SingleViewNavigationService : INavigationService
 {
     private readonly List<BaseViewModel> _viewModels = new();
     private readonly Dictionary<Type, Type> _viewModelViewDictionary = new();
 
-    private readonly IClassicDesktopStyleApplicationLifetime _desktop;
+    private readonly ContentControl _mainView;
     private readonly IServiceProvider _container;
 
     private readonly Stack<IBaseView> _backViewStack = new();
 
-    public NavigationService(IClassicDesktopStyleApplicationLifetime desktop, IServiceProvider container)
+    public SingleViewNavigationService(ISingleViewApplicationLifetime singleViewPlatform, ContentControl contentControl, IServiceProvider container)
     {
-        _desktop = desktop;
+        singleViewPlatform.MainView = contentControl;
+        _mainView = contentControl;
         _container = container;
     }
 
@@ -41,9 +43,9 @@ public class NavigationService : INavigationService
     {
         return Dispatcher.UIThread.InvokeAsync(()=>{
             var view = CreateView(viewModel);
-            var rootView = _desktop.MainWindow.Content as IBaseView;
+            var rootView = _mainView.Content as IBaseView;
             _backViewStack.Push(rootView);
-            _desktop.MainWindow.Content = view;
+            _mainView.Content = view;
         }).GetTask();
     }
 
@@ -103,7 +105,7 @@ public class NavigationService : INavigationService
             if (_backViewStack.Count > 0)
             {
                 var view = _backViewStack.Pop();
-                _desktop.MainWindow.Content = view;
+                _mainView.Content = view;
             }
         }).GetTask();
     }
