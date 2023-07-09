@@ -5,14 +5,17 @@
         <ImplicitUsings>enable</ImplicitUsings>
         <Nullable>enable</Nullable>
         <PackageId>Sanet.MVVM.DI.Avalonia</PackageId>
-        <Version>0.2.1-11rc1.1</Version>
+        <Version>1.0.11</Version>
         <Authors>Anton Makarevich</Authors>
         <Company>Anton Makarevich</Company>
-        <Description>Avalonia AppBuilder Extension to Support MS DI</Description>
+        <Description>Avalonia AppBuilder Extension to Support MS DI. Works with AvaloniaUI v11.0.0</Description>
+    </PropertyGroup>
+    <PropertyGroup>
+        <PackageProjectUrl>https://github.com/anton-makarevich/Sanet.MVVM</PackageProjectUrl>
     </PropertyGroup>
 
     <ItemGroup>
-      <PackageReference Include="Avalonia" Version="11.0.0-rc1.1" />
+      <PackageReference Include="Avalonia" Version="11.0.0" />
       <PackageReference Include="Microsoft.Extensions.DependencyInjection.Abstractions" Version="7.0.0" />
     </ItemGroup>
 
