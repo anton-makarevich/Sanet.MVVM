@@ -5,14 +5,16 @@
         <ImplicitUsings>enable</ImplicitUsings>
         <Nullable>enable</Nullable>
         <PackageId>Sanet.MVVM.Navigation.Avalonia</PackageId>
-        <Version>0.2.2-11rc1.1</Version>
+        <Version>1.0.11</Version>
         <Authors>Anton Makarevich</Authors>
         <Company>Anton Makarevich</Company>
-        <Description>Sanet MVVM Navigation implementation for Avalonia</Description>
+        <Description>Sanet MVVM Navigation implementation for Avalonia. Works with AvaloniaUI v11.0.0</Description>
     </PropertyGroup>
-
+    <PropertyGroup>
+        <PackageProjectUrl>https://github.com/anton-makarevich/Sanet.MVVM</PackageProjectUrl>
+    </PropertyGroup>
     <ItemGroup>
-      <PackageReference Include="Avalonia" Version="11.0.0-rc1.1" />
+      <PackageReference Include="Avalonia" Version="11.0.0" />
       <PackageReference Include="Sanet.MVVM.Core" Version="1.0.2" />
     </ItemGroup>
 

@@ -111,7 +111,14 @@ namespace Sanet.MVVM.Navigation.Avalonia.Services
 
         public Task NavigateToRootAsync()
         {
-            throw new NotImplementedException();
+            return Dispatcher.UIThread.InvokeAsync(() =>
+            {
+                if (_backViewStack.Count > 0)
+                {
+                    var view = _backViewStack.ToList()[_backViewStack.Count - 1];
+                    SetMainWindowContent(view);
+                }
+            }).GetTask();
         }
 
         public Task NavigateToViewModelAsync<T>(T viewModel) where T : BaseViewModel
