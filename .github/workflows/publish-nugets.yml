@@ -1,1 +1,35 @@
+name: Publish nuget packages
+
+on:
+  workflow_dispatch:
+
+env:
+  NuGetDirectory: ${{ github.workspace}}/nuget
+  
+defaults:
+  run:
+    shell: pwsh
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v3
+
+      - name: Set up .NET
+        uses: actions/setup-dotnet@v3
+        with:
+          dotnet-version: '7.x'
+
+      - name: Create nuget packages 
+        run: |
+          dotnet pack  --configuration Release --output ${{ env.NuGetDirectory }}
+
+      - name: Publish NuGet package
+        run: |
+          foreach($file in (Get-ChildItem "${{ env.NuGetDirectory }}" -Recurse -Include *.nupkg)) {
+              dotnet nuget push $file --api-key "${{ secrets.NUGET_APIKEY }}" --source https://api.nuget.org/v3/index.json --skip-duplicate
+          }
 
