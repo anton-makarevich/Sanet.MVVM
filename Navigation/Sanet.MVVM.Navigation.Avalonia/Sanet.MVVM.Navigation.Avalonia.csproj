@@ -1,12 +1,12 @@
 <Project Sdk="Microsoft.NET.Sdk">
 
     <PropertyGroup>
-        <TargetFramework>net6.0</TargetFramework>
+        <TargetFramework>net8.0</TargetFramework>
         <ImplicitUsings>enable</ImplicitUsings>
         <Nullable>enable</Nullable>
         <PackageId>Sanet.MVVM.Navigation.Avalonia</PackageId>
         <PackageLicenseExpression>MIT</PackageLicenseExpression>
-        <Version>1.1.0.1103</Version>
+        <Version>1.1.0.1105</Version>
         <Authors>Anton Makarevich</Authors>
         <Company>Anton Makarevich</Company>
         <Description>Sanet MVVM Navigation implementation for Avalonia. Works with AvaloniaUI v11.0.0</Description>
@@ -15,7 +15,7 @@
         <PackageProjectUrl>https://github.com/anton-makarevich/Sanet.MVVM</PackageProjectUrl>
     </PropertyGroup>
     <ItemGroup>
-      <PackageReference Include="Avalonia" Version="11.0.3" />
+      <PackageReference Include="Avalonia" Version="11.0.5" />
       <PackageReference Include="Sanet.MVVM.Core" Version="1.1.0" />
     </ItemGroup>
 

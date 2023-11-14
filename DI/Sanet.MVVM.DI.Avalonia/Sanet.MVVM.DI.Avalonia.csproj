@@ -1,12 +1,12 @@
 <Project Sdk="Microsoft.NET.Sdk">
 
     <PropertyGroup>
-        <TargetFramework>net7.0</TargetFramework>
+        <TargetFramework>net8.0</TargetFramework>
         <ImplicitUsings>enable</ImplicitUsings>
         <Nullable>enable</Nullable>
         <PackageId>Sanet.MVVM.DI.Avalonia</PackageId>
         <PackageLicenseExpression>MIT</PackageLicenseExpression>
-        <Version>1.1.0.1103</Version>
+        <Version>1.1.0.1105</Version>
         <Authors>Anton Makarevich</Authors>
         <Company>Anton Makarevich</Company>
         <Description>Avalonia AppBuilder Extension to Support MS DI. Works with AvaloniaUI v11.0.0</Description>
@@ -16,8 +16,8 @@
     </PropertyGroup>
 
     <ItemGroup>
-      <PackageReference Include="Avalonia" Version="11.0.3" />
-      <PackageReference Include="Microsoft.Extensions.DependencyInjection.Abstractions" Version="7.0.0" />
+      <PackageReference Include="Avalonia" Version="11.0.5" />
+      <PackageReference Include="Microsoft.Extensions.DependencyInjection.Abstractions" Version="8.0.0" />
     </ItemGroup>
 
 </Project>
