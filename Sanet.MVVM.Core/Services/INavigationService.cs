@@ -4,8 +4,8 @@ namespace Sanet.MVVM.Core.Services;
 
 public interface INavigationService
 {
-    T GetNewViewModel<T>() where T : BaseViewModel;
-    T GetViewModel<T>() where T : BaseViewModel;
+    T? GetNewViewModel<T>() where T : BaseViewModel;
+    T? GetViewModel<T>() where T : BaseViewModel;
     bool HasViewModel<T>() where T : BaseViewModel;
 
     Task NavigateToViewModelAsync<T>(T viewModel) where T : BaseViewModel;

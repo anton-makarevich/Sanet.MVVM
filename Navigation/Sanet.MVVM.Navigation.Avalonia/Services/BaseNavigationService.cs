@@ -25,10 +25,12 @@ namespace Sanet.MVVM.Navigation.Avalonia.Services
             _viewModelViewDictionary.Add(viewModel, view);
         }
 
-        private T CreateViewModel<T>() where T : BaseViewModel
+        private T? CreateViewModel<T>() where T : BaseViewModel
         {
             var vm = _container.GetService(typeof(T)) as T;
-            vm?.SetNavigationService(this);
+            if (vm == null)
+                return null;
+            vm.SetNavigationService(this);
             _viewModels.Add(vm);
             return vm;
         }
@@ -66,35 +68,40 @@ namespace Sanet.MVVM.Navigation.Avalonia.Services
             throw new NotImplementedException();
         }
 
-        public T GetNewViewModel<T>() where T : BaseViewModel
+        public T? GetNewViewModel<T>() where T : BaseViewModel
         {
-            var vm = (T)_viewModels.FirstOrDefault(f => f is T);
+            var vm = (T?)_viewModels.FirstOrDefault(f => f is T);
 
             if (vm != null)
             {
                 _viewModels.Remove(vm);
+                // ReSharper disable once SuspiciousTypeConversion.Global
+                (vm as IDisposable)?.Dispose();
             }
 
             vm = CreateViewModel<T>();
+            if (vm == null)
+                return null;
+            
             _viewModels.Add(vm);
             return vm;
         }
 
-        public T GetViewModel<T>() where T : BaseViewModel
+        public T? GetViewModel<T>() where T : BaseViewModel
         {
-            var vm = (T)_viewModels.FirstOrDefault(f => f is T);
+            var vm = (T?)_viewModels.FirstOrDefault(f => f is T);
+            if (vm != null) return vm;
+            vm = CreateViewModel<T>();
             if (vm == null)
-            {
-                vm = CreateViewModel<T>();
-                _viewModels.Add(vm);
-            }
+                return null;
+            _viewModels.Add(vm);
             return vm;
         }
 
         public bool HasViewModel<T>() where T : BaseViewModel
         {
-            var vm = (T)_viewModels.FirstOrDefault(f => f is T);
-            return (vm != null);
+            var vm = (T?)_viewModels.FirstOrDefault(f => f is T);
+            return vm != null;
         }
 
         public Task NavigateBackAsync()
@@ -128,10 +135,10 @@ namespace Sanet.MVVM.Navigation.Avalonia.Services
 
         public Task NavigateToViewModelAsync<T>() where T : BaseViewModel
         {
-            var vm = GetViewModel<T>();
-            if (vm == null)
-                vm = CreateViewModel<T>();
-            return OpenViewModelAsync(vm);
+            var vm = GetViewModel<T>() ?? CreateViewModel<T>();
+            return vm == null 
+                ? throw new InvalidOperationException($"ViewModel of type {typeof(T)} is not registered") 
+                : OpenViewModelAsync(vm);
         }
         
         
