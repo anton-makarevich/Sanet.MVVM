@@ -1,4 +1,5 @@
-﻿using Sanet.MVVM.Core.ViewModels;
+using Sanet.MVVM.Core.Models;
+using Sanet.MVVM.Core.ViewModels;
 
 namespace Sanet.MVVM.Core.Services;
 
@@ -13,7 +14,7 @@ public interface INavigationService
 
     Task ShowViewModelAsync<T>(T viewModel) where T : BaseViewModel;
     Task ShowViewModelAsync<T>() where T : BaseViewModel;
-    
+
     Task<TResult> ShowViewModelForResultAsync<T, TResult>(T viewModel) where T : BaseViewModel where TResult : class;
     Task<TResult> ShowViewModelForResultAsync<T, TResult>() where T : BaseViewModel where TResult : class;
 
@@ -22,4 +23,9 @@ public interface INavigationService
     Task NavigateToRootAsync();
 
     void RegisterViews(Type view, Type viewModel);
+
+    /// <summary>
+    /// Displays a modal dialog with a title, description, and action buttons.
+    /// </summary>
+    Task<UiAction?> AskForActionAsync(string title, string description, params UiAction[] actions);
 }
