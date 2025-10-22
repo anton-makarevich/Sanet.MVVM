@@ -1,4 +1,7 @@
 ﻿using Avalonia.Controls;
+using Avalonia.Controls.Primitives;
+using Avalonia.Layout;
+using Avalonia.Media;
 using Avalonia.Threading;
 using Sanet.MVVM.Core.Models;
 using Sanet.MVVM.Core.Services;
@@ -180,60 +183,46 @@ public abstract class BaseNavigationService : INavigationService
             // Get the current view to find the TopLevel
             var currentView = GetCurrentView();
             if (currentView is not Control control)
-            {
                 return null;
-            }
 
-            // Find the TopLevel (Window or similar)
+            // Find the TopLevel
             var topLevel = TopLevel.GetTopLevel(control);
             if (topLevel == null)
-            {
                 return null;
-            }
 
             // Create the dialog
             var dialog = new ActionDialog();
             dialog.Initialize(title, description, actions);
 
-            // Add the dialog to the visual tree
-            // We need to add it as an overlay on the current content
-            if (topLevel is Window { Content: Panel panel })
+            // Find OverlayLayer (every TopLevel usually has one)
+            var overlayLayer = OverlayLayer.GetOverlayLayer(topLevel);
+            if (overlayLayer == null)
+                throw new InvalidOperationException("Unable to find OverlayLayer for hosting the dialog");
+
+            // Prepare hosting container
+            var host = new Panel
             {
-                // Add dialog to existing panel
-                panel.Children.Add(dialog);
-                    
-                // Wait for result
+                HorizontalAlignment = HorizontalAlignment.Stretch,
+                VerticalAlignment = VerticalAlignment.Stretch,
+                Background = new SolidColorBrush(Color.FromArgb(128, 0, 0, 0)), // optional dim background
+                IsHitTestVisible = true
+            };
+            host.Children.Add(dialog);
+
+            // Add to overlay
+            overlayLayer.Children.Add(host);
+
+            try
+            {
+                // Wait for result from dialog
                 var result = await dialog.GetResultAsync();
-                    
-                // Remove dialog from panel
-                panel.Children.Remove(dialog);
-                    
                 return result;
             }
-
-            if (topLevel is Window win)
+            finally
             {
-                // Wrap current content in a Grid and add dialog
-                var originalContent = win.Content as Control;
-                if (originalContent == null)
-                {
-                    return null;
-                }
-                var grid = new Grid();
-                grid.Children.Add(originalContent);
-                grid.Children.Add(dialog);
-                win.Content = grid;
-                    
-                // Wait for result
-                var result = await dialog.GetResultAsync();
-                    
-                // Restore original content
-                win.Content = originalContent;
-                    
-                return result;
+                // Cleanup
+                overlayLayer.Children.Remove(host);
             }
-
-            return null;
         });
     }
 }
