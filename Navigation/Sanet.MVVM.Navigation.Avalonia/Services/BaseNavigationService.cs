@@ -202,6 +202,8 @@ public abstract class BaseNavigationService : INavigationService
             // Prepare hosting container
             var host = new Panel
             {
+                Height = topLevel.Height,
+                Width = topLevel.Width,
                 HorizontalAlignment = HorizontalAlignment.Stretch,
                 VerticalAlignment = VerticalAlignment.Stretch,
                 Background = new SolidColorBrush(Color.FromArgb(128, 0, 0, 0)), // optional dim background
