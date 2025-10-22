@@ -266,3 +266,5 @@ __pycache__/
 *.bak
 *.old
 Tools/Misc/KeysProvider/appsettings.json
+
+nuget/
