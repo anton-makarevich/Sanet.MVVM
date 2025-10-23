@@ -33,8 +33,7 @@ public abstract class BaseNavigationService : INavigationService
 
     private T? CreateViewModel<T>() where T : BaseViewModel
     {
-        var vm = _container.GetService(typeof(T)) as T;
-        if (vm == null)
+        if (_container.GetService(typeof(T)) is not T vm)
             return null;
         vm.SetNavigationService(this);
         _viewModels.Add(vm);
@@ -162,18 +161,62 @@ public abstract class BaseNavigationService : INavigationService
         return NavigateToViewModelAsync<T>();
     }
 
-    public Task<TResult> ShowViewModelForResultAsync<T, TResult>(T viewModel)
-        where T : BaseViewModel
-        where TResult : class
+    public async Task<TResult> ShowViewModelForResultAsync<T, TResult>(T viewModel)
+        where T : BaseViewModel, IResultProvider<TResult>
     {
-        throw new NotImplementedException();
+        return await Dispatcher.UIThread.InvokeAsync(async () =>
+        {
+            // Create the view for the viewmodel
+            var view = CreateView(viewModel);
+            if (view is not Control viewControl)
+                throw new InvalidOperationException($"View for {typeof(T)} is not a Control");
+            
+            // Find the TopLevel
+            var topLevel = TopLevel.GetTopLevel(viewControl);
+            if (topLevel == null)
+                throw new InvalidOperationException("Unable to find TopLevel");
+
+            // Find OverlayLayer
+            var overlayLayer = OverlayLayer.GetOverlayLayer(topLevel);
+            if (overlayLayer == null)
+                throw new InvalidOperationException("Unable to find OverlayLayer for hosting the view");
+
+            // Prepare hosting container
+            var host = new Panel
+            {
+                Height = topLevel.Height,
+                Width = topLevel.Width,
+                HorizontalAlignment = HorizontalAlignment.Stretch,
+                VerticalAlignment = VerticalAlignment.Stretch,
+                Background = new SolidColorBrush(Color.FromArgb(128, 0, 0, 0)),
+                IsHitTestVisible = true
+            };
+            host.Children.Add(viewControl);
+
+            // Add to overlay
+            overlayLayer.Children.Add(host);
+
+            try
+            {
+                // Wait for result from viewmodel
+                var result = await viewModel.GetResultAsync();
+                return result;
+            }
+            finally
+            {
+                // Cleanup
+                overlayLayer.Children.Remove(host);
+            }
+        });
     }
 
     public Task<TResult> ShowViewModelForResultAsync<T, TResult>()
-        where T : BaseViewModel
-        where TResult : class
+        where T : BaseViewModel, IResultProvider<TResult>
     {
-        throw new NotImplementedException();
+        var vm = GetViewModel<T>() ?? CreateViewModel<T>();
+        return vm == null 
+            ? throw new InvalidOperationException($"ViewModel of type {typeof(T)} is not registered") 
+            : ShowViewModelForResultAsync<T, TResult>(vm);
     }
 
     public async Task<UiAction?> AskForActionAsync(string title, string description, params UiAction[] actions)
@@ -228,3 +271,4 @@ public abstract class BaseNavigationService : INavigationService
         });
     }
 }
+

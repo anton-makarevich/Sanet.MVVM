@@ -1,4 +1,4 @@
-using Sanet.MVVM.Core.Models;
+﻿using Sanet.MVVM.Core.Models;
 using Sanet.MVVM.Core.ViewModels;
 
 namespace Sanet.MVVM.Core.Services;
@@ -15,8 +15,8 @@ public interface INavigationService
     Task ShowViewModelAsync<T>(T viewModel) where T : BaseViewModel;
     Task ShowViewModelAsync<T>() where T : BaseViewModel;
 
-    Task<TResult> ShowViewModelForResultAsync<T, TResult>(T viewModel) where T : BaseViewModel where TResult : class;
-    Task<TResult> ShowViewModelForResultAsync<T, TResult>() where T : BaseViewModel where TResult : class;
+    Task<TResult> ShowViewModelForResultAsync<T, TResult>(T viewModel) where T : BaseViewModel, IResultProvider<TResult>;
+    Task<TResult> ShowViewModelForResultAsync<T, TResult>() where T : BaseViewModel, IResultProvider<TResult>;
 
     Task NavigateBackAsync();
     Task CloseAsync();
@@ -29,3 +29,4 @@ public interface INavigationService
     /// </summary>
     Task<UiAction?> AskForActionAsync(string title, string description, params UiAction[] actions);
 }
+
