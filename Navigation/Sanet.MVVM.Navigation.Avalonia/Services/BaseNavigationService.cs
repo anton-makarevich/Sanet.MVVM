@@ -166,31 +166,30 @@ public abstract class BaseNavigationService : INavigationService
     {
         return await Dispatcher.UIThread.InvokeAsync(async () =>
         {
+            var currentView = GetCurrentView();
+            if (currentView is not Control currentViewControl)
+                throw new InvalidOperationException("Unable to find current view");
+
+            // Find the TopLevel
+            var topLevel = TopLevel.GetTopLevel(currentViewControl);
+            if (topLevel == null)
+                throw new InvalidOperationException("Unable to find TopLevel");
+
             // Create the view for the viewmodel
             var view = CreateView(viewModel);
             if (view is not Control viewControl)
                 throw new InvalidOperationException($"View for {typeof(T)} is not a Control");
-            
-            // Find the TopLevel
-            var topLevel = TopLevel.GetTopLevel(viewControl);
-            if (topLevel == null)
-                throw new InvalidOperationException("Unable to find TopLevel");
 
             // Find OverlayLayer
             var overlayLayer = OverlayLayer.GetOverlayLayer(topLevel);
             if (overlayLayer == null)
                 throw new InvalidOperationException("Unable to find OverlayLayer for hosting the view");
 
+            viewControl.MaxHeight = topLevel.Height-20;
+            viewControl.MaxWidth = topLevel.Width-40;
+            
             // Prepare hosting container
-            var host = new Panel
-            {
-                Height = topLevel.Height,
-                Width = topLevel.Width,
-                HorizontalAlignment = HorizontalAlignment.Stretch,
-                VerticalAlignment = VerticalAlignment.Stretch,
-                Background = new SolidColorBrush(Color.FromArgb(128, 0, 0, 0)),
-                IsHitTestVisible = true
-            };
+            var host = CreateHostPanel(topLevel);
             host.Children.Add(viewControl);
 
             // Add to overlay
@@ -243,15 +242,7 @@ public abstract class BaseNavigationService : INavigationService
                 throw new InvalidOperationException("Unable to find OverlayLayer for hosting the dialog");
 
             // Prepare hosting container
-            var host = new Panel
-            {
-                Height = topLevel.Height,
-                Width = topLevel.Width,
-                HorizontalAlignment = HorizontalAlignment.Stretch,
-                VerticalAlignment = VerticalAlignment.Stretch,
-                Background = new SolidColorBrush(Color.FromArgb(128, 0, 0, 0)), // optional dim background
-                IsHitTestVisible = true
-            };
+            var host = CreateHostPanel(topLevel);
             host.Children.Add(dialog);
 
             // Add to overlay
@@ -269,6 +260,19 @@ public abstract class BaseNavigationService : INavigationService
                 overlayLayer.Children.Remove(host);
             }
         });
+    }
+
+    private Panel CreateHostPanel(TopLevel topLevel)
+    {
+        return new Panel
+        {
+            Height = topLevel.Height,
+            Width = topLevel.Width,
+            HorizontalAlignment = HorizontalAlignment.Stretch,
+            VerticalAlignment = VerticalAlignment.Stretch,
+            Background = new SolidColorBrush(Color.FromArgb(128, 0, 0, 0)),
+            IsHitTestVisible = true
+        };
     }
 }
 
