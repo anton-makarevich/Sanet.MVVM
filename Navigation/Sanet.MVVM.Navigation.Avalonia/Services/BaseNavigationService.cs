@@ -1,4 +1,5 @@
-﻿using Avalonia.Controls;
+﻿using Avalonia;
+using Avalonia.Controls;
 using Avalonia.Controls.Primitives;
 using Avalonia.Layout;
 using Avalonia.Media;
@@ -184,12 +185,12 @@ public abstract class BaseNavigationService : INavigationService
             var overlayLayer = OverlayLayer.GetOverlayLayer(topLevel);
             if (overlayLayer == null)
                 throw new InvalidOperationException("Unable to find OverlayLayer for hosting the view");
-
-            viewControl.MaxHeight = topLevel.Height-20;
-            viewControl.MaxWidth = topLevel.Width-40;
+            
+            viewControl.MaxHeight = topLevel.Bounds.Height-20;
+            viewControl.MaxWidth = topLevel.Bounds.Width-40;
             
             // Prepare hosting container
-            var host = CreateHostPanel(topLevel);
+            var host = CreateHostPanel(topLevel.Bounds);
             host.Children.Add(viewControl);
 
             // Add to overlay
@@ -242,7 +243,7 @@ public abstract class BaseNavigationService : INavigationService
                 throw new InvalidOperationException("Unable to find OverlayLayer for hosting the dialog");
 
             // Prepare hosting container
-            var host = CreateHostPanel(topLevel);
+            var host = CreateHostPanel(topLevel.Bounds);
             host.Children.Add(dialog);
 
             // Add to overlay
@@ -262,12 +263,12 @@ public abstract class BaseNavigationService : INavigationService
         });
     }
 
-    private Panel CreateHostPanel(TopLevel topLevel)
+    private Panel CreateHostPanel(Rect bounds)
     {
         return new Panel
         {
-            Height = topLevel.Height,
-            Width = topLevel.Width,
+            Height = bounds.Height,
+            Width = bounds.Width,
             HorizontalAlignment = HorizontalAlignment.Stretch,
             VerticalAlignment = VerticalAlignment.Stretch,
             Background = new SolidColorBrush(Color.FromArgb(128, 0, 0, 0)),
