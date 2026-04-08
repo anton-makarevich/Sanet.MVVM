@@ -2,6 +2,9 @@ name: Publish nuget packages
 
 on:
   workflow_dispatch:
+  push:
+    branches:
+      - main
 
 env:
   NuGetDirectory: ${{ github.workspace}}/nuget
@@ -16,12 +19,12 @@ jobs:
 
     steps:
       - name: Checkout repository
-        uses: actions/checkout@v3
+        uses: actions/checkout@v4
 
       - name: Set up .NET
-        uses: actions/setup-dotnet@v3
+        uses: actions/setup-dotnet@v4
         with:
-          dotnet-version: '8.x'
+          dotnet-version: '10.x'
 
       - name: Create nuget packages 
         run: |
