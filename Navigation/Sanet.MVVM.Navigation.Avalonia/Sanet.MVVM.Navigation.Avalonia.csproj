@@ -6,7 +6,7 @@
         <Nullable>enable</Nullable>
         <PackageId>Sanet.MVVM.Navigation.Avalonia</PackageId>
         <PackageLicenseExpression>MIT</PackageLicenseExpression>
-        <Version>1.5.1200</Version>
+        <Version>1.5.1203</Version>
         <Authors>Anton Makarevich</Authors>
         <Company>Anton Makarevich</Company>
         <Description>Sanet MVVM Navigation implementation for Avalonia. Works with AvaloniaUI v11.0.0</Description>
@@ -15,7 +15,7 @@
         <PackageProjectUrl>https://github.com/anton-makarevich/Sanet.MVVM</PackageProjectUrl>
     </PropertyGroup>
     <ItemGroup>
-      <PackageReference Include="Avalonia" Version="12.0.0" />
+      <PackageReference Include="Avalonia" Version="12.0.3" />
     </ItemGroup>
     <ItemGroup>
       <ProjectReference Include="..\..\Sanet.MVVM.Core\Sanet.MVVM.Core.csproj" />
