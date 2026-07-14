@@ -14,25 +14,66 @@ defaults:
     shell: pwsh
 
 jobs:
-  build:
+  build-linux:
     runs-on: ubuntu-latest
-
     steps:
       - name: Checkout repository
-        uses: actions/checkout@v4
+        uses: actions/checkout@v7
 
       - name: Set up .NET
-        uses: actions/setup-dotnet@v4
+        uses: actions/setup-dotnet@v5
         with:
           dotnet-version: '10.x'
+          workloads: android wasm-tools
 
-      - name: Create nuget packages 
+      - name: Create nuget packages
         run: |
-          dotnet pack  --configuration Release --output ${{ env.NuGetDirectory }}
+          Get-ChildItem -Path . -Recurse -Include *.csproj |
+            Where-Object { $_.DirectoryName -notmatch '(Tests|iOS)[\\/]' } |
+            ForEach-Object { dotnet pack $_.FullName --configuration Release --output ${{ env.NuGetDirectory }} }
 
-      - name: Publish NuGet package
+      - name: Upload nuget packages
+        uses: actions/upload-artifact@v7
+        with:
+          name: nuget-packages-linux
+          path: ${{ env.NuGetDirectory }}/*.nupkg
+
+  build-mac:
+    runs-on: macos-latest
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v7
+
+      - name: Set up .NET
+        uses: actions/setup-dotnet@v5
+        with:
+          dotnet-version: '10.x'
+          workloads: ios
+
+      - name: Create nuget packages
+        run: |
+          Get-ChildItem -Path . -Recurse -Include *.csproj |
+            Where-Object { $_.DirectoryName -match '[\\/]iOS[\\/]' } |
+            ForEach-Object { dotnet pack $_.FullName --configuration Release --output ${{ env.NuGetDirectory }} }
+
+      - name: Upload nuget packages
+        uses: actions/upload-artifact@v7
+        with:
+          name: nuget-packages-macos
+          path: ${{ env.NuGetDirectory }}/*.nupkg
+
+  publish:
+    needs: [build-linux, build-mac]
+    runs-on: ubuntu-latest
+    steps:
+      - name: Download all artifacts
+        uses: actions/download-artifact@v7
+        with:
+          path: ${{ env.NuGetDirectory }}
+          merge-multiple: true
+
+      - name: Publish NuGet packages
         run: |
           foreach($file in (Get-ChildItem "${{ env.NuGetDirectory }}" -Recurse -Include *.nupkg)) {
               dotnet nuget push $file --api-key "${{ secrets.NUGET_APIKEY }}" --source https://api.nuget.org/v3/index.json --skip-duplicate
           }
-
