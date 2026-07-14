@@ -29,7 +29,7 @@ jobs:
       - name: Create nuget packages
         run: |
           Get-ChildItem -Path . -Recurse -Include *.csproj |
-            Where-Object { $_.DirectoryName -notmatch '(Tests|iOS)[\\/]' } |
+            Where-Object { $_.DirectoryName -notmatch 'Tests|iOS' } |
             ForEach-Object { dotnet pack $_.FullName --configuration Release --output ${{ env.NuGetDirectory }} }
 
       - name: Upload nuget packages
@@ -53,7 +53,7 @@ jobs:
       - name: Create nuget packages
         run: |
           Get-ChildItem -Path . -Recurse -Include *.csproj |
-            Where-Object { $_.DirectoryName -match '[\\/]iOS[\\/]' } |
+            Where-Object { $_.DirectoryName -match 'iOS' } |
             ForEach-Object { dotnet pack $_.FullName --configuration Release --output ${{ env.NuGetDirectory }} }
 
       - name: Upload nuget packages
