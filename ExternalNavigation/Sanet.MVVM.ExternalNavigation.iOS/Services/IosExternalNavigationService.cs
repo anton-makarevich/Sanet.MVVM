@@ -1,6 +1,4 @@
-using Foundation;
 using Sanet.MVVM.Core.Services;
-using UIKit;
 
 namespace Sanet.MVVM.ExternalNavigation.iOS.Services;
 

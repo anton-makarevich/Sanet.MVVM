@@ -13,7 +13,7 @@ public class AndroidExternalNavigationService : IExternalNavigationService
             var intent = new Intent(Intent.ActionView, uri);
             intent.AddFlags(ActivityFlags.NewTask);
 
-            global::Android.App.Application.Context.StartActivity(intent);
+            Application.Context.StartActivity(intent);
         }
         catch (Exception ex)
         {
@@ -32,7 +32,7 @@ public class AndroidExternalNavigationService : IExternalNavigationService
             var intent = new Intent(Intent.ActionSendto, uri);
             intent.AddFlags(ActivityFlags.NewTask);
 
-            global::Android.App.Application.Context.StartActivity(intent);
+            Application.Context.StartActivity(intent);
         }
         catch (Exception ex)
         {
