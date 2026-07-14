@@ -15,7 +15,7 @@
         <PackageProjectUrl>https://github.com/anton-makarevich/Sanet.MVVM</PackageProjectUrl>
     </PropertyGroup>
     <ItemGroup>
-      <PackageReference Include="Avalonia" Version="12.0.3" />
+      <PackageReference Include="Avalonia" Version="12.1.0" />
     </ItemGroup>
     <ItemGroup>
       <ProjectReference Include="..\..\Sanet.MVVM.Core\Sanet.MVVM.Core.csproj" />
