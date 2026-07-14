@@ -24,7 +24,7 @@ jobs:
         uses: actions/setup-dotnet@v5
         with:
           dotnet-version: '10.x'
-          workloads: android wasm-tools
+          workloads: android, wasm-tools
 
       - name: Create nuget packages
         run: |
