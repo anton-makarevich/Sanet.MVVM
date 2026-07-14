@@ -268,3 +268,4 @@ __pycache__/
 Tools/Misc/KeysProvider/appsettings.json
 
 nuget/
+.claude/

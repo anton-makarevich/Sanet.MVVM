@@ -1,23 +1,26 @@
 <Project Sdk="Microsoft.NET.Sdk">
 
     <PropertyGroup>
-        <TargetFramework>net10.0</TargetFramework>
+        <TargetFramework>net10.0-android</TargetFramework>
         <ImplicitUsings>enable</ImplicitUsings>
         <Nullable>enable</Nullable>
-        <PackageId>Sanet.MVVM.DI.Avalonia</PackageId>
+        <PackageId>Sanet.MVVM.ExternalNavigation.Android</PackageId>
         <PackageLicenseExpression>MIT</PackageLicenseExpression>
-        <Version>1.6.1210</Version>
+        <Version>1.6.0</Version>
         <Authors>Anton Makarevich</Authors>
         <Company>Anton Makarevich</Company>
-        <Description>Avalonia AppBuilder Extension to Support MS DI. Works with AvaloniaUI v11.0.0</Description>
+        <Description>Android implementation of IExternalNavigationService for Sanet MVVM. Opens URLs and emails using Android intents.</Description>
     </PropertyGroup>
     <PropertyGroup>
         <PackageProjectUrl>https://github.com/anton-makarevich/Sanet.MVVM</PackageProjectUrl>
     </PropertyGroup>
 
     <ItemGroup>
-      <PackageReference Include="Avalonia" Version="12.1.0" />
       <PackageReference Include="Microsoft.Extensions.DependencyInjection.Abstractions" Version="10.0.8" />
+    </ItemGroup>
+
+    <ItemGroup>
+      <ProjectReference Include="..\..\Sanet.MVVM.Core\Sanet.MVVM.Core.csproj" />
     </ItemGroup>
 
 </Project>
