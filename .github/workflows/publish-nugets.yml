@@ -14,7 +14,7 @@ defaults:
     shell: pwsh
 
 jobs:
-  build-android-wasm:
+  build-linux:
     runs-on: ubuntu-latest
     steps:
       - name: Checkout repository
@@ -38,7 +38,7 @@ jobs:
           name: nuget-packages-linux
           path: ${{ env.NuGetDirectory }}/*.nupkg
 
-  build-ios:
+  build-mac:
     runs-on: macos-latest
     steps:
       - name: Checkout repository
@@ -63,7 +63,7 @@ jobs:
           path: ${{ env.NuGetDirectory }}/*.nupkg
 
   publish:
-    needs: [build-android-wasm, build-ios]
+    needs: [build-linux, build-mac]
     runs-on: ubuntu-latest
     steps:
       - name: Download all artifacts
