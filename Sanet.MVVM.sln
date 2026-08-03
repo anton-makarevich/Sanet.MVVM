@@ -26,6 +26,8 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Sanet.MVVM.ExternalNavigati
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Sanet.MVVM.ExternalNavigation.Browser", "ExternalNavigation\Sanet.MVVM.ExternalNavigation.Browser\Sanet.MVVM.ExternalNavigation.Browser.csproj", "{FD58CCA7-745C-44DA-B726-CB6A5265F850}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Sanet.MVVM.Navigation.Avalonia.Tests", "Navigation\Sanet.MVVM.Navigation.Avalonia.Tests\Sanet.MVVM.Navigation.Avalonia.Tests.csproj", "{AE721F30-44B1-4E7F-8115-0C30265010CF}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -144,6 +146,18 @@ Global
 		{FD58CCA7-745C-44DA-B726-CB6A5265F850}.Release|x64.Build.0 = Release|Any CPU
 		{FD58CCA7-745C-44DA-B726-CB6A5265F850}.Release|x86.ActiveCfg = Release|Any CPU
 		{FD58CCA7-745C-44DA-B726-CB6A5265F850}.Release|x86.Build.0 = Release|Any CPU
+		{AE721F30-44B1-4E7F-8115-0C30265010CF}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{AE721F30-44B1-4E7F-8115-0C30265010CF}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{AE721F30-44B1-4E7F-8115-0C30265010CF}.Debug|x64.ActiveCfg = Debug|Any CPU
+		{AE721F30-44B1-4E7F-8115-0C30265010CF}.Debug|x64.Build.0 = Debug|Any CPU
+		{AE721F30-44B1-4E7F-8115-0C30265010CF}.Debug|x86.ActiveCfg = Debug|Any CPU
+		{AE721F30-44B1-4E7F-8115-0C30265010CF}.Debug|x86.Build.0 = Debug|Any CPU
+		{AE721F30-44B1-4E7F-8115-0C30265010CF}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{AE721F30-44B1-4E7F-8115-0C30265010CF}.Release|Any CPU.Build.0 = Release|Any CPU
+		{AE721F30-44B1-4E7F-8115-0C30265010CF}.Release|x64.ActiveCfg = Release|Any CPU
+		{AE721F30-44B1-4E7F-8115-0C30265010CF}.Release|x64.Build.0 = Release|Any CPU
+		{AE721F30-44B1-4E7F-8115-0C30265010CF}.Release|x86.ActiveCfg = Release|Any CPU
+		{AE721F30-44B1-4E7F-8115-0C30265010CF}.Release|x86.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
@@ -156,5 +170,6 @@ Global
 		{6DE5C107-E1D0-465F-8537-3662A34E0FC3} = {6558542C-96C1-DA8E-ED49-9C4217114DA0}
 		{04F96E3F-3822-4585-A0BF-8F6D0FDD899E} = {6558542C-96C1-DA8E-ED49-9C4217114DA0}
 		{FD58CCA7-745C-44DA-B726-CB6A5265F850} = {6558542C-96C1-DA8E-ED49-9C4217114DA0}
+		{AE721F30-44B1-4E7F-8115-0C30265010CF} = {2C00DF42-EB2C-4B2B-ADCE-3D7FECF47F57}
 	EndGlobalSection
 EndGlobal

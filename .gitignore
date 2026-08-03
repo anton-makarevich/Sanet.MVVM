@@ -269,3 +269,4 @@ Tools/Misc/KeysProvider/appsettings.json
 
 nuget/
 .claude/
+.serena/memories
