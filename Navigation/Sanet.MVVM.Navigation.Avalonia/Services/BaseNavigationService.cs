@@ -89,12 +89,42 @@ public abstract class BaseNavigationService : INavigationService
             (vm as IDisposable)?.Dispose();
         }
 
-        vm = CreateViewModel<T>();
-        if (vm == null)
-            return null;
-            
-        _viewModels.Add(vm);
-        return vm;
+        return CreateViewModel<T>();
+    }
+
+    public async Task<T?> GetNewViewModelAsync<T>() where T : BaseViewModel
+    {
+        var vm = (T?)_viewModels.FirstOrDefault(f => f is T);
+
+        if (vm != null)
+        {
+            _viewModels.Remove(vm);
+            // Teardown fully completes before creating the new VM
+            await DisposeViewModelAsync(vm);
+        }
+
+        return CreateViewModel<T>();
+    }
+
+    private static async Task DisposeViewModelAsync(BaseViewModel vm)
+    {
+        // Prefer async disposal when available; a failing teardown shouldn't
+        // block navigation to the new screen, so exceptions are swallowed.
+        try
+        {
+            if (vm is IAsyncDisposable asyncDisposable)
+            {
+                await asyncDisposable.DisposeAsync();
+            }
+            else
+            {
+                (vm as IDisposable)?.Dispose();
+            }
+        }
+        catch
+        {
+            // Disposal errors are ignored on purpose
+        }
     }
 
     public T? GetViewModel<T>() where T : BaseViewModel
