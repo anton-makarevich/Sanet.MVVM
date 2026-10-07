@@ -11,7 +11,6 @@ env:
 
 permissions:
   contents: read
-  id-token: write
 
 defaults:
   run:
@@ -85,6 +84,7 @@ jobs:
           dotnet-version: '10.x'
 
       - name: NuGet login
+        id: login
         uses: NuGet/login@v1
         with:
           user: ${{ vars.NUGET_USER }}
@@ -93,6 +93,6 @@ jobs:
         env:
           NUGET_APIKEY: ${{ steps.login.outputs.NUGET_API_KEY }}
         run: |
-          foreach($file in (Get-ChildItem \"${{ env.NuGetDirectory }}\" -Recurse -Include *.nupkg)) {
+          foreach($file in (Get-ChildItem "${{ env.NuGetDirectory }}" -Recurse -Include *.nupkg)) {
               dotnet nuget push $file --api-key $env:NUGET_APIKEY --source https://api.nuget.org/v3/index.json --skip-duplicate
-          }","replaceAll":false}
+          }
