@@ -6,14 +6,14 @@
         <Nullable>enable</Nullable>
         <PackageId>Sanet.MVVM.Views.Avalonia</PackageId>
         <PackageLicenseExpression>MIT</PackageLicenseExpression>
-        <Version>1.6.1211</Version>
+        <Version>1.5.1213</Version>
         <Authors>Anton Makarevich</Authors>
         <Company>Anton Makarevich</Company>
         <Description>Avalonia BaseView for Sanet MVVM. Works with AvaloniaUI v11.0.0</Description>
     </PropertyGroup>
 
     <ItemGroup>
-      <PackageReference Include="Avalonia" Version="12.1.1" />
+      <PackageReference Include="Avalonia" Version="12.1.3" />
     </ItemGroup>
 
     <ItemGroup>

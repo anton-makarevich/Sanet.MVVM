@@ -268,5 +268,8 @@ __pycache__/
 Tools/Misc/KeysProvider/appsettings.json
 
 nuget/
-.claude/
+
+# AI tools
 .serena/memories
+.serena/project.local.yml
+.claude/
