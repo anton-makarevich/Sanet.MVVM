@@ -268,3 +268,7 @@ __pycache__/
 Tools/Misc/KeysProvider/appsettings.json
 
 nuget/
+
+# AI tools
+.serena/memories
+.serena/project.local.yml
