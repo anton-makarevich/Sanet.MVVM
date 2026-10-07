@@ -6,6 +6,13 @@ namespace Sanet.MVVM.Core.Services;
 public interface INavigationService
 {
     T? GetNewViewModel<T>() where T : BaseViewModel;
+
+    /// <summary>
+    /// Removes any cached ViewModel of type <typeparamref name="T"/>, awaiting its disposal
+    /// (async or sync, as implemented), then returns a freshly created instance.
+    /// </summary>
+    Task<T?> GetNewViewModelAsync<T>() where T : BaseViewModel;
+
     T? GetViewModel<T>() where T : BaseViewModel;
     bool HasViewModel<T>() where T : BaseViewModel;
 

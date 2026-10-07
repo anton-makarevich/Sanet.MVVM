@@ -272,3 +272,4 @@ nuget/
 # AI tools
 .serena/memories
 .serena/project.local.yml
+.claude/
