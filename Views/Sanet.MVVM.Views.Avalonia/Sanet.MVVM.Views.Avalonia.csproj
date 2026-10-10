@@ -9,7 +9,7 @@
         <Version>1.7.1214</Version>
         <Authors>Anton Makarevich</Authors>
         <Company>Anton Makarevich</Company>
-        <Description>Avalonia BaseView for Sanet MVVM. Works with AvaloniaUI v11.0.0</Description>
+        <Description>Avalonia BaseView for Sanet MVVM. Works with AvaloniaUI v12</Description>
     </PropertyGroup>
 
     <ItemGroup>

@@ -9,7 +9,7 @@
         <Version>1.7.1214</Version>
         <Authors>Anton Makarevich</Authors>
         <Company>Anton Makarevich</Company>
-        <Description>Avalonia AppBuilder Extension to Support MS DI. Works with AvaloniaUI v11.0.0</Description>
+        <Description>Avalonia AppBuilder Extension to Support MS DI. Works with AvaloniaUI v12</Description>
     </PropertyGroup>
     <PropertyGroup>
         <PackageProjectUrl>https://github.com/anton-makarevich/Sanet.MVVM</PackageProjectUrl>
