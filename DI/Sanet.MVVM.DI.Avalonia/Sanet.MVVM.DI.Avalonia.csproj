@@ -6,7 +6,7 @@
         <Nullable>enable</Nullable>
         <PackageId>Sanet.MVVM.DI.Avalonia</PackageId>
         <PackageLicenseExpression>MIT</PackageLicenseExpression>
-        <Version>1.7.1216</Version>
+        <Version>1.7.12161</Version>
         <Authors>Anton Makarevich</Authors>
         <Company>Anton Makarevich</Company>
         <Description>Avalonia AppBuilder Extension to Support MS DI. Works with AvaloniaUI v12</Description>
@@ -17,7 +17,7 @@
 
     <ItemGroup>
       <PackageReference Include="Avalonia" Version="12.1.6" />
-      <PackageReference Include="Microsoft.Extensions.DependencyInjection.Abstractions" Version="10.0.14" />
+      <PackageReference Include="Microsoft.Extensions.DependencyInjection.Abstractions" Version="11.0.0" />
     </ItemGroup>
 
 </Project>
