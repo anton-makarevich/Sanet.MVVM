@@ -9,16 +9,16 @@ view models and view mappings, and install an initial `IBaseView`.
 
 ## Packages
 
-| Package | Purpose | Target framework |
-| --- | --- | --- |
-| [Sanet.MVVM.Core](https://github.com/anton-makarevich/Sanet.MVVM/blob/main/Sanet.MVVM.Core/README.md) | MVVM base classes and contracts (`BindableBase`, `BaseViewModel`, `INavigationService`, `IBaseView`, `UiAction`, `IExternalNavigationService`) | `net10.0` |
-| [Sanet.MVVM.Views.Avalonia](https://github.com/anton-makarevich/Sanet.MVVM/blob/main/Views/Sanet.MVVM.Views.Avalonia/README.md) | Typed Avalonia base view (`BaseView<TViewModel>`) | `net10.0` |
-| [Sanet.MVVM.DI.Avalonia](https://github.com/anton-makarevich/Sanet.MVVM/blob/main/DI/Sanet.MVVM.DI.Avalonia/README.md) | `AppBuilder` hook that stores an `IServiceCollection` in application resources | `net10.0` |
-| [Sanet.MVVM.Navigation.Avalonia](https://github.com/anton-makarevich/Sanet.MVVM/blob/main/Navigation/Sanet.MVVM.Navigation.Avalonia/README.md) | `INavigationService` implementations for Avalonia desktop and single-view lifetimes | `net10.0` |
-| [Sanet.MVVM.ExternalNavigation.Android](https://github.com/anton-makarevich/Sanet.MVVM/blob/main/ExternalNavigation/Sanet.MVVM.ExternalNavigation.Android/README.md) | Android implementation of `IExternalNavigationService` using intents | `net10.0-android` |
-| [Sanet.MVVM.ExternalNavigation.Browser](https://github.com/anton-makarevich/Sanet.MVVM/blob/main/ExternalNavigation/Sanet.MVVM.ExternalNavigation.Browser/README.md) | Browser (WASM) implementation of `IExternalNavigationService` using `window.open` | `net10.0-browser` |
-| [Sanet.MVVM.ExternalNavigation.Desktop](https://github.com/anton-makarevich/Sanet.MVVM/blob/main/ExternalNavigation/Sanet.MVVM.ExternalNavigation.Desktop/README.md) | Desktop implementation of `IExternalNavigationService` using OS-specific shell commands | `net10.0` |
-| [Sanet.MVVM.ExternalNavigation.iOS](https://github.com/anton-makarevich/Sanet.MVVM/blob/main/ExternalNavigation/Sanet.MVVM.ExternalNavigation.iOS/README.md) | iOS implementation of `IExternalNavigationService` using UIKit | `net10.0-ios` |
+| Package | Purpose |
+| --- | --- |
+| [Sanet.MVVM.Core](https://github.com/anton-makarevich/Sanet.MVVM/blob/main/Sanet.MVVM.Core/README.md) | MVVM base classes and contracts (`BindableBase`, `BaseViewModel`, `INavigationService`, `IBaseView`, `UiAction`, `IExternalNavigationService`) |
+| [Sanet.MVVM.Views.Avalonia](https://github.com/anton-makarevich/Sanet.MVVM/blob/main/Views/Sanet.MVVM.Views.Avalonia/README.md) | Typed Avalonia base view (`BaseView<TViewModel>`) |
+| [Sanet.MVVM.DI.Avalonia](https://github.com/anton-makarevich/Sanet.MVVM/blob/main/DI/Sanet.MVVM.DI.Avalonia/README.md) | `AppBuilder` hook that stores an `IServiceCollection` in application resources |
+| [Sanet.MVVM.Navigation.Avalonia](https://github.com/anton-makarevich/Sanet.MVVM/blob/main/Navigation/Sanet.MVVM.Navigation.Avalonia/README.md) | `INavigationService` implementations for Avalonia desktop and single-view lifetimes |
+| [Sanet.MVVM.ExternalNavigation.Android](https://github.com/anton-makarevich/Sanet.MVVM/blob/main/ExternalNavigation/Sanet.MVVM.ExternalNavigation.Android/README.md) | Android implementation of `IExternalNavigationService` using intents |
+| [Sanet.MVVM.ExternalNavigation.Browser](https://github.com/anton-makarevich/Sanet.MVVM/blob/main/ExternalNavigation/Sanet.MVVM.ExternalNavigation.Browser/README.md) | Browser (WASM) implementation of `IExternalNavigationService` using `window.open` |
+| [Sanet.MVVM.ExternalNavigation.Desktop](https://github.com/anton-makarevich/Sanet.MVVM/blob/main/ExternalNavigation/Sanet.MVVM.ExternalNavigation.Desktop/README.md) | Desktop implementation of `IExternalNavigationService` using OS-specific shell commands |
+| [Sanet.MVVM.ExternalNavigation.iOS](https://github.com/anton-makarevich/Sanet.MVVM/blob/main/ExternalNavigation/Sanet.MVVM.ExternalNavigation.iOS/README.md) | iOS implementation of `IExternalNavigationService` using UIKit |
 
 ## Installation
 

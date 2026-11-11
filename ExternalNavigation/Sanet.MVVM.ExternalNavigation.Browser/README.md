@@ -9,12 +9,6 @@ JavaScript `window.open`.
 dotnet add package Sanet.MVVM.ExternalNavigation.Browser
 ```
 
-## Target framework and dependencies
-
-- Target framework: `net10.0-browser`
-- `Sanet.MVVM.Core`
-- `Microsoft.Extensions.DependencyInjection.Abstractions`
-
 ## Minimal usage
 
 ```csharp

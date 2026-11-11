@@ -9,12 +9,6 @@ OS-specific mechanisms.
 dotnet add package Sanet.MVVM.ExternalNavigation.Desktop
 ```
 
-## Target framework and dependencies
-
-- Target framework: `net10.0`
-- `Sanet.MVVM.Core`
-- `Microsoft.Extensions.DependencyInjection.Abstractions`
-
 ## Minimal usage
 
 ```csharp

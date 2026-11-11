@@ -8,12 +8,6 @@ iOS implementation of `IExternalNavigationService` that opens URLs and email cli
 dotnet add package Sanet.MVVM.ExternalNavigation.iOS
 ```
 
-## Target framework and dependencies
-
-- Target framework: `net10.0-ios`
-- `Sanet.MVVM.Core`
-- `Microsoft.Extensions.DependencyInjection.Abstractions`
-
 ## Minimal usage
 
 ```csharp

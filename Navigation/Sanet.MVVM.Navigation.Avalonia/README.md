@@ -9,12 +9,6 @@ lifetimes.
 dotnet add package Sanet.MVVM.Navigation.Avalonia
 ```
 
-## Target framework and dependencies
-
-- Target framework: `net10.0`
-- `Avalonia` 12.1.6
-- `Sanet.MVVM.Core`
-
 ## Minimal usage
 
 Classic desktop lifetime (`IClassicDesktopStyleApplicationLifetime`):

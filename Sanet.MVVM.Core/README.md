@@ -8,11 +8,6 @@ MVVM base classes and contracts for .NET 10.
 dotnet add package Sanet.MVVM.Core
 ```
 
-## Target framework and dependencies
-
-- Target framework: `net10.0`
-- Main dependency: `AsyncAwaitBestPractices.MVVM` (provides `AsyncCommand`, used by `BackCommand`)
-
 ## Minimal usage
 
 ```csharp

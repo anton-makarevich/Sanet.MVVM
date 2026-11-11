@@ -9,12 +9,6 @@ application resources.
 dotnet add package Sanet.MVVM.DI.Avalonia
 ```
 
-## Target framework and dependencies
-
-- Target framework: `net10.0`
-- `Avalonia` 12.1.6
-- `Microsoft.Extensions.DependencyInjection.Abstractions`
-
 ## Minimal usage
 
 ```csharp

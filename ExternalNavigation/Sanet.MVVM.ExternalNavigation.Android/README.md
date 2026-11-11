@@ -9,12 +9,6 @@ intents.
 dotnet add package Sanet.MVVM.ExternalNavigation.Android
 ```
 
-## Target framework and dependencies
-
-- Target framework: `net10.0-android`
-- `Sanet.MVVM.Core`
-- `Microsoft.Extensions.DependencyInjection.Abstractions`
-
 ## Minimal usage
 
 ```csharp

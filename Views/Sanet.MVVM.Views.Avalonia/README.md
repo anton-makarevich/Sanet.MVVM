@@ -8,12 +8,6 @@ Typed Avalonia v12 base view that connects a view model to a `UserControl`.
 dotnet add package Sanet.MVVM.Views.Avalonia
 ```
 
-## Target framework and dependencies
-
-- Target framework: `net10.0`
-- `Avalonia` 12.1.6
-- `Sanet.MVVM.Core`
-
 ## Minimal usage
 
 ```csharp
