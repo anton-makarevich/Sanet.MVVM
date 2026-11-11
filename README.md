@@ -37,9 +37,9 @@ dotnet add package Sanet.MVVM.ExternalNavigation.iOS
 
 ## How the packages fit together
 
-1. The application builds and owns the `IServiceProvider`.
-2. The application registers view models and any platform services, such as an
+1. The application registers view models and any platform services, such as an
    `IExternalNavigationService`.
+2. The application builds and owns the `IServiceProvider`.
 3. The application creates `NavigationService` (classic desktop lifetime) or
    `SingleViewNavigationService` (single-view lifetime).
 4. The application calls `RegisterViews(viewType, viewModelType)` for each view/view-model pair.
