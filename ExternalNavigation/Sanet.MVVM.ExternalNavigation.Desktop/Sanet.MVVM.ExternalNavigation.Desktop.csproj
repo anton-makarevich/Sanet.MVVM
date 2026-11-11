@@ -10,6 +10,7 @@
         <Authors>Anton Makarevich</Authors>
         <Company>Anton Makarevich</Company>
         <Description>Desktop implementation of IExternalNavigationService for Sanet MVVM. Opens URLs and emails using OS-specific mechanisms.</Description>
+        <PackageReadmeFile>README.md</PackageReadmeFile>
     </PropertyGroup>
     <PropertyGroup>
         <PackageProjectUrl>https://github.com/anton-makarevich/Sanet.MVVM</PackageProjectUrl>
@@ -21,6 +22,10 @@
 
     <ItemGroup>
       <ProjectReference Include="..\..\Sanet.MVVM.Core\Sanet.MVVM.Core.csproj" />
+    </ItemGroup>
+
+    <ItemGroup>
+      <None Update="README.md" Pack="true" PackagePath="\" />
     </ItemGroup>
 
 </Project>
