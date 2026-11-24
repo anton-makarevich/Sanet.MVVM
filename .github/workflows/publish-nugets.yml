@@ -26,7 +26,7 @@ jobs:
       - name: Set up .NET
         uses: actions/setup-dotnet@v5
         with:
-          dotnet-version: '10.x'
+          dotnet-version: '11.x'
           workloads: android, wasm-tools
 
       - name: Create nuget packages
@@ -42,7 +42,7 @@ jobs:
           path: ${{ env.NuGetDirectory }}/*.nupkg
 
   build-mac:
-    runs-on: macos-latest
+    runs-on: xcode-27
     steps:
       - name: Checkout repository
         uses: actions/checkout@v7
@@ -50,8 +50,11 @@ jobs:
       - name: Set up .NET
         uses: actions/setup-dotnet@v5
         with:
-          dotnet-version: '10.x'
+          dotnet-version: '11.x'
           workloads: ios
+
+      - name: Select Xcode 27.2
+        run: sudo xcode-select --switch /Applications/Xcode_27.2.app
 
       - name: Create nuget packages
         run: |
@@ -81,7 +84,7 @@ jobs:
       - name: Setup .NET
         uses: actions/setup-dotnet@v5
         with:
-          dotnet-version: '10.x'
+          dotnet-version: '11.x'
 
       - name: NuGet login
         id: login
