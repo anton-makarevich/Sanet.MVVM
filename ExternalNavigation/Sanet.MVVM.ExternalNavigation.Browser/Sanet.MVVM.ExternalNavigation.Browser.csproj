@@ -7,7 +7,7 @@
         <AllowUnsafeBlocks>true</AllowUnsafeBlocks>
         <PackageId>Sanet.MVVM.ExternalNavigation.Browser</PackageId>
         <PackageLicenseExpression>MIT</PackageLicenseExpression>
-        <Version>1.7.2</Version>
+        <Version>1.7.3</Version>
         <Authors>Anton Makarevich</Authors>
         <Company>Anton Makarevich</Company>
         <Description>Browser (WASM) implementation of IExternalNavigationService for Sanet MVVM. Opens URLs using JavaScript window.open.</Description>

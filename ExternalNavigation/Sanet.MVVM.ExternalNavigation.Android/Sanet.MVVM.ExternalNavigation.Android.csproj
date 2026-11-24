@@ -6,7 +6,7 @@
         <Nullable>enable</Nullable>
         <PackageId>Sanet.MVVM.ExternalNavigation.Android</PackageId>
         <PackageLicenseExpression>MIT</PackageLicenseExpression>
-        <Version>1.7.2</Version>
+        <Version>1.7.3</Version>
         <Authors>Anton Makarevich</Authors>
         <Company>Anton Makarevich</Company>
         <Description>Android implementation of IExternalNavigationService for Sanet MVVM. Opens URLs and emails using Android intents.</Description>
